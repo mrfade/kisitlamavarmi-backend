@@ -13,7 +13,12 @@ app.use(bodyParser.json())
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 
-const whitelist = ['http://localhost:3000', 'http://example2.com']
+const whitelist = [
+    'http://localhost:3000',
+    'http://kisitlamavarmi.sunucum.cloud',
+    'https://kisitlamavarmi.sunucum.cloud',
+    'https://kisitlamavarmi-frontend.pages.dev'
+]
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
