@@ -24,12 +24,13 @@ const corsOptions = {
         if (whitelist.indexOf(origin) !== -1) {
             callback(null, true)
         } else {
-            // callback(new Error('Not allowed by CORS'))
+            callback(new Error('Not allowed by CORS'))
         }
     }
 }
 
 app.use(cors(corsOptions))
+app.options('*', cors(corsOptions))
 
 const connection = mysql.createPool({
     host: process.env.DBHOST,
