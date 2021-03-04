@@ -32,6 +32,11 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.options('*', cors(corsOptions))
 
+app.use(function (err, req, res, next) {
+    console.error(err.stack)
+    res.status(400).send()
+})
+
 const connection = mysql.createPool({
     host: process.env.DBHOST,
     user: process.env.DBUSER,
